@@ -1,0 +1,30 @@
+{
+  "name": "pff",
+  "version": "1.0.0",
+  "description": "Playoff Fantasy Football",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "client": "cd client && npm start",
+    "start": "nodemon server.js",
+    "develop": "concurrently --kill-others-on-fail \"npm run start\" \"npm run client\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/actruax2/PFF.git"
+  },
+  "author": "Aaron Truax & Geoff Amey",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/actruax2/PFF/issues"
+  },
+  "homepage": "https://github.com/actruax2/PFF#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.2",
+    "nodemon": "^2.0.15"
+  },
+  "devDependencies": {
+    "concurrently": "^7.0.0"
+  }
+}

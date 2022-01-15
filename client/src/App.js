@@ -1,5 +1,6 @@
 import './App.css';
 import {useState, useEffect} from 'react';
+import axios from 'axios';
 
 function App() {
   // Declare a new 'apiState' variable, with initial contents of "not working"
@@ -9,12 +10,11 @@ function App() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('/api/state');
-        const json = await response.json()
-        setApiState(json.state)
+        const result = await axios.get('/api/state')
+        setApiState(result.data.state)
       } catch (error) {  
         console.error("Caught an error: " + error)
-        setApiState('error')
+        setApiState('error: ' + error)
       }
     };
 

@@ -20,7 +20,6 @@
   },
   "homepage": "https://github.com/actruax2/PFF#readme",
   "dependencies": {
-    "cors": "^2.8.5",
     "express": "^4.17.2",
     "nodemon": "^2.0.15"
   },

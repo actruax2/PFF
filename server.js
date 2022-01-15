@@ -1,11 +1,7 @@
 const express = require("express");
-const cors = require("cors");
 
 // Initialize the application
 const app = express();
-
-// CORS allows the client to make cross-origin requests to the API
-app.use(cors()); 
 
 // Configure Express to only look at urlencoded bodies with a Content-Type of "application/json"
 app.use(express.urlencoded());

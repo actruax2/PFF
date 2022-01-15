@@ -1,23 +1,33 @@
-import logo from './logo.svg';
 import './App.css';
+import {useState, useEffect} from 'react';
 
 function App() {
+  // Declare a new 'apiState' variable, with initial contents of "not working"
+  const [apiState, setApiState] = useState('uninitialized');
+
+  // useEffect is run automatically when the component is mounted or updated
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch('/api/state');
+        const json = await response.json()
+        setApiState(json.state)
+      } catch (error) {  
+        console.error("Caught an error: " + error)
+        setApiState('error')
+      }
+    };
+
+    fetchData()
+  });
+  
+  // Hooks return very simple bits of HTML
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Example Application Component</h1>
+      <p>
+        The API is {apiState}
+      </p>
     </div>
   );
 }

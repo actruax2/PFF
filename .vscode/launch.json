@@ -5,18 +5,31 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Launch Chrome",
+            "name": "Server/Client",
+            "request": "launch",
+            "runtimeArgs": [
+                "run-script",
+                "develop"
+            ],
+            "env": {"BROWSER": "none"},
+            "runtimeExecutable": "npm",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "type": "pwa-node"
+        },
+        {
+            "name": "Chrome",
             "request": "launch",
             "type": "pwa-chrome",
             "url": "http://localhost:3000",
             "webRoot": "${workspaceFolder}/client"
         },
+    ],
+    "compounds": [
         {
-            "command": "npm start",
-            "name": "Run npm start",
-            "request": "launch",
-            "type": "node-terminal",
-            "cwd": "${workspaceFolder}/client"
+            "name": "Full Stack Debug",
+            "configurations": ["Server/Client", "Chrome"]
         }
     ]
 }

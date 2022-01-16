@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "client": "cd client && npm start",
-    "start": "nodemon --ignore client/ server.js",
+    "start": "NODE_ENV=development nodemon --ignore client/ server.js",
     "develop": "concurrently --kill-others-on-fail \"npm run start\" \"npm run client\""
   },
   "repository": {
@@ -21,7 +21,9 @@
   "homepage": "https://github.com/actruax2/PFF#readme",
   "dependencies": {
     "express": "^4.17.2",
-    "nodemon": "^2.0.15"
+    "knex": "^1.0.1",
+    "nodemon": "^2.0.15",
+    "pg": "^8.7.1"
   },
   "devDependencies": {
     "concurrently": "^7.0.0"

@@ -1,0 +1,20 @@
+version: '3.1'
+services:
+  # A Basic postgresql database for development. No persistence layer, so when
+  # the container is deleted, the database goes with it.
+  db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: pff
+    ports:
+      - 5432:5432
+
+  # A Basic web interface providing database management information.
+  # Use server of 'db' to connect to the database running in this deployment
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080

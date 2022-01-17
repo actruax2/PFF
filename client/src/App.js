@@ -4,14 +4,14 @@ import axios from 'axios';
 
 function App() {
   // Declare a new 'apiState' variable, with initial contents of "not working"
-  const [apiState, setApiState] = useState('uninitialized');
+  const [apiState, setApiState] = useState({state: 'uninitialized', db: 'unknown', users: []});
 
   // useEffect is run automatically when the component is mounted or updated
   useEffect(() => {
     const fetchData = async () => {
       try {
         const result = await axios.get('/api/state')
-        setApiState(result.data.state)
+        setApiState({state: result.data.state, db: result.data.database, users: result.data.users})
       } catch (error) {  
         console.error("Caught an error: " + error)
         setApiState('error: ' + error)
@@ -19,15 +19,14 @@ function App() {
     };
 
     fetchData()
-  });
+  }, []);
   
   // Hooks return very simple bits of HTML
   return (
     <div className="App">
       <h1>Example Application Component</h1>
-      <p>
-        The API is {apiState}
-      </p>
+      <p>The API is {apiState.state} and the Database is {apiState.db}</p>
+      <p>(Users: {apiState.users ? JSON.stringify(apiState.users) : 'none'})</p>
     </div>
   );
 }

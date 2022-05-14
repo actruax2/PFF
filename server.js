@@ -1,5 +1,6 @@
 const express = require('express');
 const api = require('./api/index');
+const config = require('./config');
 
 // Initialize the application
 const app = express();
@@ -11,10 +12,7 @@ app.use(express.json());
 // Add the api routes to the application
 app.use('/api', api);
 
-// Run on the port set in the .env, or 5000 if not specified
-const PORT = process.env.PORT || 5000;
-
 // Start listening on the configured port
-app.listen(PORT, () => {
-  console.log(`server (${process.env.NODE_ENV}) running at http://localhost:${PORT}`);
+app.listen(config.port, () => {
+  console.log(`server (${process.env.NODE_ENV}) running at http://localhost:${config.port}`);
 });

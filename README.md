@@ -84,19 +84,15 @@ TBD
 There are a number of environment variables and customizations to support eventual deployment to a production database
 and server. These aren't finalized or documented (yet), but this section is left as a placeholder for when they are.
 
-#### `NODE_ENV`
+#### ExpressJS Server
 
-The node environment. Should be one of `development` | `staging` | `production`. Defaults to `development` when run from
-`npm start`
+For the ExpressJS Server component, environment-based configuration can be found in `config.js`, and can be
+overridden by setting variables in the environment of the machine it's running on.
 
-#### `PGSQL_CONNECTION`
+#### React Client
 
-The connection string for the PostgreSQL database connection. See the [PostgreSQL Documentation](https://www.postgresql.org/docs/current/libpq-connect.html#LIBPQ-CONNSTRING)
-for information on the format of these connection strings.
-
-#### `PORT`
-
-The port that the ExpressJS server is running on. Defaults to `5000`.
+In the React client, local secrets and environment variables can be configured for development by copying the
+`/client/.env` file to `/client/.env.local` and changing the variables as required.
 
 ## Design Notes
 

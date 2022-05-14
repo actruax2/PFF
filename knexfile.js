@@ -1,5 +1,4 @@
-// Update with your config settings.
-const PGDB_CONNECTION = process.env.PGDB_CONNECTION || 'postgresql://postgres:password@localhost/pff';
+const config = require('./config');
 
 /**
  * @type { Object.<string, import("knex").Knex.Config> }
@@ -7,7 +6,7 @@ const PGDB_CONNECTION = process.env.PGDB_CONNECTION || 'postgresql://postgres:pa
 module.exports = {
   development: {
     client: 'postgresql',
-    connection: PGDB_CONNECTION,
+    connection: config.pgdb_connection,
     pool: {
       min: 2,
       max: 10,

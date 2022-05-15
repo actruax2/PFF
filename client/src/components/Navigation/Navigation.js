@@ -7,55 +7,63 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import { Typography } from '@mui/material';
+import Typography from '@mui/material/Typography';
 import { navigationItems } from './NavigationItems';
+import { useNavigate } from 'react-router-dom';
+import { Grid } from '@mui/material';
 
 const drawerWidth = 280;
 
-export default function Navigation() {
+const Navigation = () => {
+  const navigate = useNavigate();
+
   return (
-    <Drawer
-      sx={{
-        width: drawerWidth,
-        flexShrink: 0,
-        '& .MuiDrawer-paper': {
+    <Grid item xs={4}>
+      <Drawer
+        sx={{
           width: drawerWidth,
-          boxSizing: 'border-box',
-        },
-      }}
-      variant="permanent"
-      anchor="left"
-    >
-      <Toolbar>
-        <Typography
-          variant="h7"
-          noWrap
-          component="a"
-          href="/"
-          sx={{
-            mr: 2,
-            display: { xs: 'none', md: 'flex' },
-            fontWeight: 700,
-            color: 'inherit',
-            textDecoration: 'none',
-          }}
-        >
-          Playoff Fantasy Football
-        </Typography>
-      </Toolbar>
-      <Divider />
-      <List>
-        {navigationItems.map((item, index) => (
-          <ListItem key={item.id} disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                {item.icon}
-              </ListItemIcon>
-              <ListItemText primary={item.label} />
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
-    </Drawer>
+          flexShrink: 0,
+          '& .MuiDrawer-paper': {
+            width: drawerWidth,
+            boxSizing: 'border-box',
+          },
+        }}
+        variant="permanent"
+        anchor="left"
+      >
+        <Toolbar>
+          <Typography
+            variant="h7"
+            noWrap
+            component="a"
+            href="/"
+            sx={{
+              mr: 2,
+              display: { xs: 'none', md: 'flex' },
+              fontWeight: 700,
+              color: 'inherit',
+              textDecoration: 'none',
+            }}
+          >
+            Playoff Fantasy Football
+          </Typography>
+        </Toolbar>
+        <Divider />
+        <List>
+          {navigationItems.map((item, index) => (
+            <ListItem button key={item.id} onClick={() => navigate(item.route)} disablePadding>
+              <ListItemButton>
+                <ListItemIcon>
+                  {item.icon}
+                </ListItemIcon>
+                <ListItemText primary={item.label} />
+              </ListItemButton>
+            </ListItem>
+          ))}
+        </List>
+      </Drawer>
+    </Grid>
   );
 }
+
+export default Navigation;

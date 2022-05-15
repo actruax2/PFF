@@ -1,14 +1,15 @@
-import { CssBaseline } from '@mui/material';
-import { Box } from '@mui/system';
+import { CssBaseline, Grid } from '@mui/material';
 import * as React from 'react';
+import { Outlet } from 'react-router-dom';
 import Navigation from './components/Navigation/Navigation'
 
 function App() {
   return (
-    <Box>
+    <Grid container>
       <CssBaseline enableColorScheme />
-      <Navigation></Navigation>
-    </Box>
+      <Navigation />
+      <Outlet />
+    </Grid>
   );
 }
 

@@ -10,36 +10,36 @@ export const navigationItems = [
         id: 0,
         icon: <NewspaperIcon />,
         label: 'News',
-        route: '',
+        route: 'news',
     },
     {
         id: 1,
         icon: <GroupsIcon />,
         label: 'My Team',
-        route: '',
+        route: 'teams',
     },
     {
         id: 2,
         icon: <EqualizerIcon />,
         label: 'League Standings',
-        route: '',
+        route: 'league',
     },
     {
         id: 3,
         icon: <AdminPanelSettingsIcon />,
         label: 'Administration',
-        route: '',
+        route: 'admin',
     },
     {
         id: 4,
         icon: <AccountCircleIcon />,
         label: 'My Profile',
-        route: '',
+        route: 'profile',
     },
     {
         id: 5,
         icon: <LogoutIcon />,
         label: 'Sign Out',
-        route: '',
+        route: ''
     }
 ]

@@ -12,10 +12,15 @@ import { navigationItems } from './NavigationItems';
 import { useNavigate } from 'react-router-dom';
 import { Grid } from '@mui/material';
 
+import { useAuth0 } from "@auth0/auth0-react";
+import LoginButton from './LoginButton';
+import LogoutButton from './LogoutButton';
+
 const drawerWidth = 280;
 
 const Navigation = () => {
   const navigate = useNavigate();
+  const { isAuthenticated } = useAuth0();
 
   return (
     <Grid item xs={4}>
@@ -50,7 +55,8 @@ const Navigation = () => {
         </Toolbar>
         <Divider />
         <List>
-          {navigationItems.map((item, index) => (
+          <LoginButton />
+          {isAuthenticated && navigationItems.map((item, index) => (
             <ListItem button key={item.id} onClick={() => navigate(item.route)} disablePadding>
               <ListItemButton>
                 <ListItemIcon>
@@ -60,9 +66,10 @@ const Navigation = () => {
               </ListItemButton>
             </ListItem>
           ))}
+          <LogoutButton/>
         </List>
       </Drawer>
-    </Grid>
+    </Grid >
   );
 }
 

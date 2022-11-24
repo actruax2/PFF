@@ -25,7 +25,7 @@ exports.up = function up(knex) {
     })
     .createTable('NFLteam', (table) => {
       table.string('conference', 3).notNullable();
-      table.string('city', 32).notNullable();
+      table.string('home', 32).notNullable();
       table.string('team', 32).notNullable().unique();
       table.string('shortName', 3).notNullable().unique();
     })
